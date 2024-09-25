@@ -1,0 +1,7 @@
+plink --file YOUR_GENOTYPE_DATA_NAME --make-bed --out data_converted
+
+plink --bfile data_converted --indep-pairwise WINDOW STEP_SIZE THRESHOLD --out data_out
+
+plink --bfile data_converted --extract data_out.prune.in --make-bed --out data_pruned
+
+plink --bfile data_pruned --recode -tab --out data_processed
