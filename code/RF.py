@@ -7,7 +7,7 @@ import pandas as pd
 
 
 ## Read data 
-## Assume that each data has n lines(rows) & m-1 markers + 1 phenotype at the end(columns)
+## Assume that each data has n lines(rows) & m markers + 1 phenotype at the end(columns)
 data_train = pd.read_csv('READ YOUR TRAIN DATA')
 data_test = pd.read_csv('READ YOUR TEST DATA')
 train_x, train_y = data_train.iloc[:,:-1], data_train.iloc[:,-1]
