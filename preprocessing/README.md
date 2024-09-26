@@ -1,9 +1,15 @@
 # Preprocessing
 
-Genetic markers are preprocessed by linkage-disequilibrium (LD) filtering from PLINK 1.9.
+It consists of imputation and linkage-disequilibrium(LD)-pruning
 
-1) Data containing the genetic markers is assumed to be in both ped and map formats
-2) The data is converted into a bed file
-3) Unfiltered markers are extracted from the LD-calculation
-4) Filtered markers are removed from the converted bed file
-5) The filtered bed file is recoded into ped and map files
+Imputation
+1) Prepare the original genetic marker data
+2) Remove markers with more missing values than the threshold
+3) Calculate and replace the rest of the missing values with the most frequent allele in each marker
+
+LD-pruning
+1) Assume that the genetic markers are in both ped and map formats. PLINK 1.9 is installed
+2) Convert the data into a bed file
+3) Extract Unfiltered markers from the LD-calculation
+4) Remove filtered markers from the converted bed file
+5) Recode the filtered bed file into ped and map files
