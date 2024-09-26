@@ -8,7 +8,7 @@ Imputation
 3) Calculate and replace the rest of the missing values with the most frequent allele in each marker
 
 LD-pruning
-1) Assume that the genetic markers are in both ped and map formats. PLINK 1.9 is installed
+1) Assume that the genetic markers are in both ped and map formats. PLINK 1.9 is installed(PLINK_data_conversion.py can be used as an option)
 2) Convert the data into a bed file
 3) Extract Unfiltered markers from the LD-calculation
 4) Remove filtered markers from the converted bed file
