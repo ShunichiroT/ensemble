@@ -5,7 +5,7 @@ library(dplyr)
 
 
 ## Read data 
-## Assume that each data has n lines(rows) & m-1 markers + 1 phenotype at the end(columns)
+## Assume that each data has n lines(rows) & m markers + 1 phenotype at the end(columns)
 data_train <- fread("YOUR TRAIN DATA",header=TRUE)
 data_test <- fread("YOUR TEST DATA",header=TRUE)
 data <- rbind(data_train,data_test)
