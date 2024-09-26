@@ -1,4 +1,4 @@
-# README
+# Preprocessing
 
 Genetic markers are preprocessed by linkage-disequilibrium (LD) filtering from PLINK 1.9.
 
