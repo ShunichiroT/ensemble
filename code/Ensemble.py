@@ -6,7 +6,7 @@ from scipy.stats import pearsonr
 #import os
 
 ## Read data 
-## Assume that each data has n lines(rows) & m-1 markers + 1 phenotype at the end(columns)
+## Assume that each data has n lines(rows) & m markers + 1 phenotype at the end(columns)
 data_train = pd.read_csv('YOUR TRAIN DATA')
 data_test = pd.read_csv('YOUR TEST DATA')
 
