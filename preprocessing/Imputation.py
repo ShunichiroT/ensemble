@@ -5,7 +5,7 @@ TH = "MISSING VALUE THRESHOLD"
 
 ## Read your genetic marker data 
 ## n x m: n is the total number of lines and m is the total number of markers
-data = pd.read_csv("YOUR GEMETIC MARKER DATA")
+data = pd.read_csv("YOUR GENETIC MARKER DATA")
 
 ## Remove markers that have more missing values than the threshold
 frequency_missing = data[data=='-'].count() / data.shape[0]
