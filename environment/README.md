@@ -6,7 +6,7 @@ A list of libraries and packages need to be installed:
 2. For R
     - Install the packages below:
          - BGLR
-	 - stringr
-	 - data.table
+         - stringr
+         - data.table
          - dplyr
          - iml 
