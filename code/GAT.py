@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import torch
 import torch.nn.functional as F
+import os
 from sklearn.metrics import mean_squared_error
 from scipy.stats import pearsonr
 from torch_geometric.data import HeteroData
@@ -10,16 +11,19 @@ from torch_geometric.nn import GATv2Conv, Linear, to_hetero_with_bases
 from torch_geometric.loader import HGTLoader
 from torch_geometric.explain import Explainer, CaptumExplainer
 
-#import os
 
 ## Read data 
-## Assume that each data has n lines(rows) & m markers + 1 phenotype at the end(columns)
-data_train = pd.read_csv('YOUR TRAIN DATA')
-data_test = pd.read_csv('YOUR TEST DATA')
+## Assume that each data is structured as below:
+## Rows: n RILs(n rows in total) 
+## columns: the first column for id, m columns for markers and the last column for phenotype(m+2 columns in total)
+os.chdir('YOUR PATH')
+data_train = pd.read_csv('example_train.csv')
+data_test = pd.read_csv('example_test.csv')
 
 ## Preprocess the data so that it caon be converted into a graph format
+tr_id, te_id = data_train.iloc[:,0], data_test.iloc[:,0]
 data = pd.concat([data_train,data_test])
-data_QTL, data_pheno = data.iloc[:,:-1].reset_index(drop=True), data.iloc[:,-1].reset_index(drop=True)
+data_QTL, data_pheno = data.iloc[:,1:-1].reset_index(drop=True), data.iloc[:,-1].reset_index(drop=True)
 
 x_qtl = []
 for i in range(len(data_QTL.iloc[0,:])):
@@ -66,7 +70,7 @@ data['pheno'].test_mask = torch.from_numpy(mask_test).to(torch.bool)
 regularisation = 5e-4 
 learning_rate = 0.005
 dropout = 0.9
-epoch = 150
+epoch = 1
 channels = 20
 heads = 8
 
@@ -125,7 +129,7 @@ def train():
             loss_train_sum += loss
             loss.backward()
             optimizer.step()
-        print(f'Epoch {epoch:>3} | Train Loss: {loss_train_sum/len(train_loader):.5f}')
+        print(f'Epoch {ep:>3} | Train Loss: {loss_train_sum/len(train_loader):.5f}')
     
     return model
              
@@ -172,8 +176,8 @@ record = pd.DataFrame([r,mse]).T
 record.columns = ['Pearson_r','MSE']
 
 ## Store prediction result for the test data
-result_prediction_test = pd.concat([pd.DataFrame(predicted_test),pd.DataFrame(actual_test)],axis=1)
-result_prediction_test.columns = ['predicted','actual']  
+result_prediction_test = pd.concat([pd.DataFrame(te_id), pd.DataFrame(predicted_test),pd.DataFrame(actual_test)],axis=1)
+result_prediction_test.columns = ['id','predicted','actual']  
 
 ## Store prediction result for the train data
 predicted_train = []
@@ -183,8 +187,8 @@ predicted_train.append(result[data['pheno'].train_mask].tolist())
 actual_train.append([item for sublist in data['pheno'].y[data['pheno'].train_mask].tolist() for item in sublist])
 predicted_train = [k for i in predicted_train for k in i]
 actual_train = [k for i in actual_train for k in i]
-result_prediction_train = pd.concat([pd.DataFrame(predicted_train),pd.DataFrame(actual_train)],axis=1)
-result_prediction_train.columns = ['predicted','actual']   
+result_prediction_train = pd.concat([pd.DataFrame(tr_id), pd.DataFrame(predicted_train),pd.DataFrame(actual_train)],axis=1)
+result_prediction_train.columns = ['id','predicted','actual']  
 
 ## Extract marker effects
 bline = tuple([0] * len(data.x_dict))
@@ -213,7 +217,7 @@ for ii in range(1,len(data.x_dict)):
 effect.columns = list(data_QTL.columns) 
 
 ## Save all results
-record.to_csv('METRIC DATA')
-effect.to_csv('MARKER EFFECT DATA')
-result_prediction_train.to_csv('PREDICTION RESULT FOR TRAIN DATA')
-result_prediction_test.to_csv('PREDICTION RESULT FOR TEST DATA')
+record.to_csv('METRIC_GAT.csv')
+effect.to_csv('MARKER_EFFECT_GAT.csv')
+result_prediction_train.to_csv('PREDICTION_RESULT_TRAIN_GAT.csv')
+result_prediction_test.to_csv('PREDICTION_RESULT_TEST_GAT.csv')
