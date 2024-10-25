@@ -1,4 +1,4 @@
-There are three example data files. Each file should follow the specific structure mentioned below:
+There are three example data files based on Chen et al. (2019). Each file should follow the specific structure mentioned below:
 
 1. example_train.csv
      - This file should be used when training each individual genomic prediction model
