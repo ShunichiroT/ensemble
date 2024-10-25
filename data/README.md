@@ -16,4 +16,4 @@ There are three example data files. Each file should follow the specific structu
      - This file should be used when evaluating the ensemble model
      - The format should be n_test x 8
           - n_test: the total number of RILs in the test data
-          - 8: one id column, six predicted phenotype columns from each individual genomic prediction model and one phenotype column
+          - 8: one id column, six predicted phenotype columns from the six individual genomic prediction models and one phenotype column
