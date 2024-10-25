@@ -70,7 +70,7 @@ data['pheno'].test_mask = torch.from_numpy(mask_test).to(torch.bool)
 regularisation = 5e-4 
 learning_rate = 0.005
 dropout = 0.9
-epoch = 1
+epoch = 150
 channels = 20
 heads = 8
 
