@@ -4,5 +4,6 @@ There are seven scripts implementing six individual genomic prediction models an
      - Change the file path to yours
 
 2. Combine all the predicted phenotypes of RILs for your test set stored in the output folder to create a predicted phenotype matrix
+     - The format is specified in the README file at the Data folder
 
-3. Use the predicted phenotype matrix as the input for the naïve ensemble-average
+4. Use the predicted phenotype matrix as the input for the naïve ensemble-average
