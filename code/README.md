@@ -1,8 +1,8 @@
-# Code
+There are seven scripts implementing six individual genomic prediction models and the naïve ensemble-average model:
 
-This folder contains the six individual genomic prediction and one ensemble model.
+1. Implement the classical and ML genomic prediction models. The implementation order does not affect the result
+     - Change the file path to yours
 
-1)	Run the six genomic prediction models and store predicted phenotypes from each model. The order of implementation does not affect the subsequent process.
-2)	Create a predicted phenotype matrix (n x m+2). Each row should represent each RIL (total is n). The first column indicates ids, the next six columns (m) are the predicted phenotypes from each individual genomic prediction model and the last column is the observed phenotype.
-3)	Run the ensemble model using the matrix developed in the previous step.
+2. Combine all the predicted phenotypes for RILs for your test set stored in the output folder to create a predicted phenotype matrix
 
+3. Use the predicted phenotype matrix as the input for the naïve ensemble-average
