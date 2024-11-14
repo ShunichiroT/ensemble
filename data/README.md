@@ -12,7 +12,7 @@ There are three example data files based on Chen et al. (2019). Each file should
           - n_test: the total number of RILs in the test data
           - m+2: one id column, m markers and one phenotype column
 
-3. example_matrix.csv
+3. example_matrix.csv (predicted phenotype matrix)
      - This file should be used when evaluating the ensemble model
      - The format should be n_test x 8
           - n_test: the total number of RILs in the test data
