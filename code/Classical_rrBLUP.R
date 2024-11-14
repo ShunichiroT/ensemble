@@ -61,8 +61,8 @@ effect <- data.frame(t(fm[["ETA"]][["mrk"]][["b"]]))
 colnames(effect) <- colnames(data)[1:ncol(data)-1]
 
 ## Save all results
-write.csv(record, "Metric_rrBLUP.csv")
-write.csv(effect, "Marker_effect_rrBLUP.csv")
+write.csv(record, "../output/Metric_rrBLUP.csv")
+write.csv(effect, "../output/Marker_effect_rrBLUP.csv")
 write.csv(result_prediction_train, "../output/Prediction_result_train_GBLUP.csv")
 write.csv(result_prediction_test, "../output/Prediction_result_test_GBLUP.csv")
 

@@ -92,7 +92,7 @@ for(j in 1:len){
 colnames(effect) <- colnames(data)[1:ncol(data)-1]
 
 ## Save all results
-write.csv(record, "Metric_RKHS.csv")
-write.csv(effect, "Marker_effect_RKHS.csv")
+write.csv(record, "../output/Metric_RKHS.csv")
+write.csv(effect, "../output/Marker_effect_RKHS.csv")
 write.csv(result_prediction_train, "../output/Prediction_result_train_RKHS.csv")
 write.csv(result_prediction_test, "../output/Prediction_result_test_RKHS.csv")

@@ -216,7 +216,7 @@ for ii in range(1,len(data.x_dict)):
 effect.columns = list(data_QTL.columns) 
 
 ## Save all results
-record.to_csv('Metric_GAT.csv')
-effect.to_csv('Marker_effect_GAT.csv')
+record.to_csv('../output/Metric_GAT.csv')
+effect.to_csv('../output/Marker_effect_GAT.csv')
 result_prediction_train.to_csv('../output/Prediction_result_train_GAT.csv')
 result_prediction_test.to_csv('../output/Prediction_result_test_GAT.csv')
