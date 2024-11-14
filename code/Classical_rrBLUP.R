@@ -8,7 +8,6 @@ library(dplyr)
 ## Assume that each data is structured as below:
 ## Rows: n RILs(n rows in total) 
 ## columns: the first column for id, m columns for markers and the last column for phenotype(m+2 columns in total)
-setwd('your/path/ensemble-main/code')
 data_train <- fread("../data/example_train.csv",header=TRUE)
 data_test <- fread("../data/example_test.csv",header=TRUE)
 tr_id <- data_train[,1]
@@ -62,9 +61,8 @@ effect <- data.frame(t(fm[["ETA"]][["mrk"]][["b"]]))
 colnames(effect) <- colnames(data)[1:ncol(data)-1]
 
 ## Save all results
-write.csv(record, "METRIC_rrBLUP.csv")
-write.csv(effect, "MARKER_EFFECT_rrBLUP.csv")
-setwd('your/path/ensemble-main/output')
-write.csv(result_prediction_train, "Prediction_result_train_GBLUP.csv")
-write.csv(result_prediction_test, "Prediction_result_test_GBLUP.csv")
+write.csv(record, "Metric_rrBLUP.csv")
+write.csv(effect, "Marker_effect_rrBLUP.csv")
+write.csv(result_prediction_train, "../output/Prediction_result_train_GBLUP.csv")
+write.csv(result_prediction_test, "../output/Prediction_result_test_GBLUP.csv")
 

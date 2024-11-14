@@ -10,7 +10,6 @@ import os
 ## Assume that each data is structured as below:
 ## Rows: n RILs(n rows in total) 
 ## columns: the first column for id, m columns for markers and the last column for phenotype(m+2 columns in total)
-os.chdir('your/path/ensemble-main/code')
 data_train = pd.read_csv('../data/example_train.csv')
 data_test = pd.read_csv('../data/example_test.csv')
 
@@ -52,6 +51,5 @@ effect.columns = list(data_train.columns)[1:-1]
 ## Save all results
 record.to_csv('Metric_SVR.csv')
 effect.to_csv('Marker_effect_SVR.csv')
-os.chdir('your/path/ensemble-main/output')
-result_prediction_train.to_csv('Prediction_result_train_SVR.csv')
-result_prediction_test.to_csv('Prediction_result_test_SVR.csv')
+result_prediction_train.to_csv('../output/Prediction_result_train_SVR.csv')
+result_prediction_test.to_csv('../output/Prediction_result_test_SVR.csv')

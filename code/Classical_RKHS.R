@@ -9,7 +9,6 @@ library(iml)
 ## Assume that each data is structured as below:
 ## Rows: n RILs(n rows in total) 
 ## columns: the first column for id, m columns for markers and the last column for phenotype(m+2 columns in total)
-setwd('your/path/ensemble-main/code')
 data_train <- fread("../data/example_train.csv",header=TRUE)
 data_test <- fread("../data/example_test.csv",header=TRUE)
 tr_id <- data_train[,1]
@@ -93,8 +92,7 @@ for(j in 1:len){
 colnames(effect) <- colnames(data)[1:ncol(data)-1]
 
 ## Save all results
-write.csv(record, "METRIC_RKHS.csv")
-write.csv(effect, "MARKER_EFFECT_RKHS.csv")
-setwd('your/path/ensemble-main/output')
-write.csv(result_prediction_train, "Prediction_result_train_RKHS.csv")
-write.csv(result_prediction_test, "Prediction_result_test_RKHS.csv")
+write.csv(record, "Metric_RKHS.csv")
+write.csv(effect, "Marker_effect_RKHS.csv")
+write.csv(result_prediction_train, "../output/Prediction_result_train_RKHS.csv")
+write.csv(result_prediction_test, "../output/Prediction_result_test_RKHS.csv")

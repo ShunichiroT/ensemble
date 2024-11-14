@@ -9,7 +9,6 @@ from scipy.stats import pearsonr
 ## Assume that each data is structured as below:
 ## Rows: n RILs(n rows in total) 
 ## columns: the first column for id, next six columns for the predicted phenotypes of each prediction model and the last column for phenotype(eight columns in total)
-os.chdir('your/path/ensemble-main/code')
 #data_train = pd.read_csv('../data/example_train.csv')
 data_test = pd.read_csv('../data/example_matrix.csv')
 
@@ -39,8 +38,7 @@ result_prediction_test.columns = ['predicted','actual']
 
 ## Save all results
 record.to_csv('Metric_ensemble.csv')
-os.chdir('your/path/ensemble-main/output')
-#result_prediction_train.to_csv('Prediction_result_test_ensemble.csv')
-result_prediction_test.to_csv('Prediction_result_test_ensemble.csv')
+#result_prediction_train.to_csv('../output/Prediction_result_test_ensemble.csv')
+result_prediction_test.to_csv('../output/Prediction_result_test_ensemble.csv')
 
 
